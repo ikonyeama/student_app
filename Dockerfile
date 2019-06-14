@@ -8,7 +8,7 @@ RUN apk add --no-cache gcc musl-dev linux-headers
 # We copy just the requirements.txt first to leverage Docker cache
 COPY requirements.txt requirements.txt
 
-WORKDIR /  # use this to create a working directory inside container
+WORKDIR /
 
 RUN pip install -r requirements.txt
 
