@@ -8,5 +8,5 @@ services:
       - 5000:5000                                                                                                          
     container_name: MuscleMan                                                                                                
     volumes:                                                                                                               
-      - /tmp/webapp:/var/webapp #Remember that, the tmp directory is designed to be wiped on system reboot.         
+      - /tmp/webapp2:/var/webapp2 #Remember that, the tmp directory is designed to be wiped on system reboot.         
       - /var/run/docker.sock2:/var/run/docker.sock2                                                                          
