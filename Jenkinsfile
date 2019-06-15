@@ -8,7 +8,7 @@ pipeline {
     }
     stage('build and start application') {
       steps {
-	    sh 'cd totona3 && docker-compose up'
+	    sh 'docker-compose up'
       }   
     }
   }
