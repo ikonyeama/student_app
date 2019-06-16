@@ -8,7 +8,6 @@ pipeline {
     }
     stage('build and start application') {
       steps {
-         withEnv(["DOCKER_HOME=/usr/local/bin"])
 	    sh 'docker-compose up'
       }
     }
