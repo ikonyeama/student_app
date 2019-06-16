@@ -7,9 +7,10 @@ pipeline {
       }
     }
     stage('build and start application') {
+	 withEnv(["DOCKER_HOME=/usr/local/bin"]){ 
       steps {
-	    sh '/usr/local/bin/docker-compose -f docker-compose.yml up --build'
-      }   
+	    sh 'docker-compose up'
+      }
+     }	  
     }
   }
-}                               
