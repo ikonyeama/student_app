@@ -8,7 +8,7 @@ pipeline {
     }
     stage('build and start application') {
       steps {
-	    sh 'docker-compose up'
+	    sh 'docker-compose -f docker-compose.yml up --build'
       }   
     }
   }
