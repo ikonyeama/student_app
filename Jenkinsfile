@@ -2,7 +2,7 @@ pipeline {
   agent { docker { image 'python:3.7.3' } }
   stages {
     stage('Initialize'){
-     def dockerHome = tool 'myDocker'
+     dockerHome = tool 'myDocker'
      env.PATH = "${dockerHome}/bin:${env.PATH}"
      }
     stage('build') {
