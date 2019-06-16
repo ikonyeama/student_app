@@ -1,5 +1,5 @@
 pipeline {
-  agent { docker { image 'python:3.7.3' } }
+  agent any
   stages {
     stage('build') {
       steps {
@@ -8,7 +8,7 @@ pipeline {
     }
     stage('build and start application') {
       steps {
-            sh 'docker ps -a'
+            sh 'docker-compose -f docker-compose.yml up --build'
       } 
     }
   }
