@@ -3,9 +3,9 @@ services:
   totona3:                                                                                                                 
     build: 
      context: .                                                                                                   
-     privileged: true
      dockerfile: Dockerfile                                                                                                    
-    user: root                                                                                                             
+    user: root
+    privileged: true                                                                                                             
     ports:                                                                                                                 
       - 5000:5000                                                                                                          
     container_name: MuscleMan
