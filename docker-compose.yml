@@ -1,12 +1,15 @@
 version: '3.2'                                                                                                             
 services:                                                                                                                  
   totona3:                                                                                                                 
-    build: .                                                                                                    
-    privileged: true                                                                                                       
-    user: root                                                                                                             
+    build: 
+     context: .                                                                                                   
+     privileged: true
+     dockerfile: Dockerfile                                                                                                    
+     user: root                                                                                                             
     ports:                                                                                                                 
       - 5000:5000                                                                                                          
-    container_name: MuscleMan                                                                                                
+    container_name: MuscleMan
+    command: ["composer", "install"]                                                                                                
     volumes:                                                                                                               
       - /tmp/totona3:/var/totona3 #Remember that, the tmp directory is designed to be wiped on system reboot.         
       - /var/run/docker.sock2:/var/run/docker.sock2                                                                          
