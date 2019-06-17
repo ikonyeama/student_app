@@ -4,6 +4,12 @@ pipeline {
       PATH = '$PATH:/usr/local/bin'
   }
   stages {
+    stage('Initialize') {
+        steps {
+        def dockerHome = tool 'myDocker'
+        env.PATH = '${dockerHome}/bin:${env.PATH}'
+        }
+    }
     stage('build') {
       steps {
         sh 'pip install -r requirements.txt'
