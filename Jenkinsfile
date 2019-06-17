@@ -1,5 +1,4 @@
 node {
-  stages {
     stage('Initialize') {
         steps {
         def dockerHome = tool 'myDocker'
@@ -16,5 +15,4 @@ node {
             sh 'docker-compose -f docker-compose.yml up --build'
       } 
     }
-  }
 }
