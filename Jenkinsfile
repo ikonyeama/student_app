@@ -1,8 +1,4 @@
 node {
-  agent {dockerfile true }
-  environment {
-      PATH = '$PATH:/usr/local/bin'
-  }
   stages {
     stage('Initialize') {
         steps {
