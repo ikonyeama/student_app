@@ -4,12 +4,16 @@ node {
         def dockerHome = tool 'myDocker'
         env.PATH = '${dockerHome}/bin:${env.PATH}'
     }
-    stage('build')
+    stage('Checkout')
     {
-        sh 'pip install -r requirements.txt'
+        checkout scm
     }
-    stage('build and start application')
-    {
+      stage('build')
+           {
+            sh 'pip install -r requirements.txt'
+           }
+        stage('build and start application')
+        {
             sh 'docker-compose -f docker-compose.yml up --build'
-    }
+        }
 }
