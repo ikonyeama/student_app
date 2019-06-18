@@ -5,13 +5,7 @@ pipeline {
       disableConcurrentBuilds()
   }
   stages {
-    stage('Install Dependencies') {
-      steps {
-        sh 'pip install -r requirements.txt'
-      }
-    }
     stage('Build and Run Application') {
-      agent { dockerfile true}
       steps {
 	    sh 'docker-compose -f docker-compose.yml up --build'
       } 
