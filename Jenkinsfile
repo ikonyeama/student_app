@@ -6,7 +6,6 @@ pipeline {
   }
   stages {
     stage('Install Dependencies') {
-      agent any
       steps {
         sh 'pip install -r requirements.txt'
       }
