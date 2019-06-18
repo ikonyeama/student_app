@@ -1,12 +1,12 @@
 pipeline {
-  agent { dockerfile true }
+  agent { docker { image 'python:3.7.3' } }
   stages {
-    stage('Install Dependencies') {
+    stage('build') {
       steps {
         sh 'pip install -r requirements.txt'
       }
     }
-    stage('Build and Run Application') {
+    stage('build and start application') {
       steps {
 	    sh '/usr/local/bin/docker-compose -f docker-compose.yml up --build'
       } 
