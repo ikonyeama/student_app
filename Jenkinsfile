@@ -11,7 +11,7 @@ pipeline {
       }
     }
     stage('Build and Run Application') {
-      agent { docker true}
+      agent { dockerfile true}
       steps {
 	    sh 'docker-compose -f docker-compose.yml up --build'
       } 
