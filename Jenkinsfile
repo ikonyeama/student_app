@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent {dockerfile true}
   options {
       timeout(time: 1, unit: 'DAYS')
       disableConcurrentBuilds()
@@ -11,7 +11,7 @@ pipeline {
       }
     }
     stage('Build and Run Application') {
-      agent any
+      agent {docker-compose}
       steps {
 	    sh 'docker-compose -f docker-compose.yml up --build'
       } 
