@@ -16,8 +16,8 @@ pipeline {
           }                                                                                                
         stage('build image and push to dockerHub') {                                                       
             steps {                                                                                        
-                sh "cd Jumbo && docker image build --no-cache -t Jumbo:latest ."                           
-                sh "docker image tag Jumbo:latest $dockerUser/student_app:latest"                       
+                sh "cd Jumbo && docker image build --no-cache -t jumbo:latest ."                           
+                sh "docker image tag jumbo:latest $dockerUser/student_app:latest"                       
                 sh "docker image push $dockerUser/student_app:latest"                                   
             }                                                                                              
         }                                                                                                  
