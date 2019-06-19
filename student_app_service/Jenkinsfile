@@ -1,0 +1,26 @@
+pipeline {                                                                                                 
+    agent any                                                                                              
+       stages {                                                                                            
+        stage("initialize") {                                                                              
+            steps {                                                                                        
+              script {                                                                               
+              withCredentials([usernamePassword(                                                           
+                credentialsId: "dockerHubAccount",                                                         
+                usernameVariable: "USERNAME",                                                              
+                passwordVariable: "PASSWORD",                                                              
+              )]) {                                                                                        
+                sh "docker login -u $dockerUser -p $dockerPassword"                                        
+                }                                                                                            
+              } 
+            }			
+          }                                                                                                
+        stage('pull image and deploy stack') {                                           
+            steps {    
+                sh "cd student_app_service && docker swarm init"			
+                sh "docker pull $dockerUser/student_app:latest"   
+                sh "docker stack deploy -c docker-compose.yml student_app		   
+                echo "student_app services started successfully"                             
+            }                                                                                              
+        } 		
+    }                                                                                                      
+}
