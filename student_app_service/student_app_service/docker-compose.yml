@@ -1,0 +1,21 @@
+version: '3.2'                                                                                                             
+services:                                                                                                                  
+  totona3_service:
+    image: ikonyeama/student_app:latest                                                                                                                 
+    deploy: 
+     context: .                                                                                                   
+     replicas: 3
+     resources:
+       limits:
+         cpus: "0.1"
+         memory: 50M
+     restart_policy:
+       condition: on-failure
+    ports:
+      - "5000:5000"
+    networks:
+      - totona_net
+networks:
+  totona_net:
+                                                                                                          
+    

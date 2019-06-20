@@ -1,5 +1,6 @@
 version: '3.2'                                                                                                             
 services:                                                                                                                  
+<<<<<<< HEAD
   totona3_service:
     image: ikonyeama/student_app:latest                                                                                                                 
     deploy: 
@@ -19,3 +20,17 @@ networks:
   totona_net:
                                                                                                           
     
+=======
+  totona3:                                                                                                                 
+    build: 
+     context: .                                                                                                   
+     dockerfile: Dockerfile                                                                                                    
+    user: root
+    privileged: true                                                                                                             
+    ports:                                                                                                                 
+      - 5000:5000                                                                                                          
+    container_name: MuscleMan
+    volumes:                                                                                                               
+      - /tmp/totona3:/var/totona3 #Remember that, the tmp directory is designed to be wiped on system reboot.         
+      - /var/run/docker.sock2:/var/run/docker.sock2                                                                          
+>>>>>>> d51fe3008131670209d8c7636f8de2710d98da80
