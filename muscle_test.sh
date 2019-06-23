@@ -1,14 +1,13 @@
 #!/bin/bash
 
-url=http://ec2-52-210-178-23.eu-west-1.compute.amazonaws.com
-EXEC="curl -Is ${url}:5000/ | head -n -1"
-EXECCMD="${EXEC}"
-eval ${EXECCMD}
+set x
+url="http://ec2-52-210-178-23.eu-west-1.compute.amazonaws.com"
+curl ${url}/ -s -o /dev/null -w "response_code: ${http_code}"
+RESULT="$?"
 
-if [ $? -eq "0" ]; 
+if [ "$RESULT" -eq "0" ]; 
 then
-              echo "APP SERVER TEST IS SUCCESSFUL!"              
+    echo "APP SERVER TEST IS SUCCESSFUL!"              
 else
-              echo "APP SERVER TEST IS FAILED!"
-              exit 2
+    echo "APP SERVER TEST FAILED!"
 fi
