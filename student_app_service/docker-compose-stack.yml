@@ -3,8 +3,7 @@ services:
   totona3_service:
     image: ikonyeama/student_app:latest                                                                                                                 
     deploy: 
-     context: .                                                                                                   
-     replicas: 3
+     replicas: 1
      resources:
        limits:
          cpus: "0.1"

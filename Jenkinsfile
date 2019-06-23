@@ -32,6 +32,12 @@ pipeline {
             steps {                                                                                                                    
                 sh "./muscle_test.sh"     
             }                                                                                              
-        } 	                                                                                                  
+        }
+        stage('Deploy stack') {                                           
+            steps {    			
+                sh "cd student_app_service && docker stack deploy -c docker-compose-stack.yml student_app"		   
+                echo "student_app services started successfully"                            
+            }                                                                                              
+        }                                          
     }                                                                                                      
-}    
+}
