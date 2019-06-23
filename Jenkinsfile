@@ -27,6 +27,11 @@ pipeline {
                 sh "docker run -d --rm -p 5000:5000 --name MuscleMan $dockerUser/student_app:latest"     
                 echo "MuscleMan Application started on port: 5000 using http"                             
             }                                                                                              
-        }                                                                                                  
+        }
+        stage('Test launched Application') {                                           
+            steps {                                                                                                                    
+                sh "./muscle_test.sh"     
+            }                                                                                              
+        } 	                                                                                                  
     }                                                                                                      
 }    
