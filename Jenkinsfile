@@ -24,7 +24,7 @@ pipeline {
         stage('pull image and run image on container') {                                           
             steps {                                                                                        
                 sh "docker pull $dockerUser/student_app:$BUILD_NUMBER"                             
-                sh "docker run -d --rm -p 5000:5000 --name MuscleMan $dockerUser/student_app:$BUILD_NUMBER"     
+                sh "docker run -d --rm -p 5000:5000 $dockerUser/student_app:$BUILD_NUMBER"     
                 echo "MuscleMan Application started on port: 5000 using http"                             
             }                                                                                              
         }
