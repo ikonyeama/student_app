@@ -16,15 +16,15 @@ pipeline {
           }                                                                                                
         stage('build image and push to dockerHub') {                                                       
             steps {                                                                                        
-                sh "cd Jumbo && docker image build --no-cache -t jumbo:latest ."                           
-                sh "docker image tag jumbo:latest $dockerUser/student_app:latest"                       
-                sh "docker image push $dockerUser/student_app:latest"                                   
+                sh "cd Jumbo && docker image build --no-cache -t jumbo:$BUILD_TAG ."                           
+                sh "docker image tag jumbo:$BUILD_TAG $dockerUser/student_app:$BUILD_TAG"                       
+                sh "docker image push $dockerUser/student_app:$BUILD_TAG"                                   
             }                                                                                              
         }                                                                                                  
         stage('pull image and run image on container') {                                           
             steps {                                                                                        
-                sh "docker pull $dockerUser/student_app:latest"                             
-                sh "docker run -d --rm -p 5000:5000 --name MuscleMan $dockerUser/student_app:latest"     
+                sh "docker pull $dockerUser/student_app:$BUILD_TAG"                             
+                sh "docker run -d --rm -p 5000:5000 --name MuscleMan $dockerUser/student_app:$BUILD_TAG"     
                 echo "MuscleMan Application started on port: 5000 using http"                             
             }                                                                                              
         }
